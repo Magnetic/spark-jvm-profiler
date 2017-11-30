@@ -35,6 +35,11 @@
             <name>Vadim Semenov</name>
             <url>github.com/buryat</url>
         </developer>
+        <developer>
+            <id>helkhalfi</id>
+            <name>Hichame El Khalfi</name>
+            <url>github.com/helkhalfi</url>
+        </developer>
     </developers>
 
     <properties>
