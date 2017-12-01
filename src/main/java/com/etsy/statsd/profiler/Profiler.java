@@ -15,7 +15,7 @@ public abstract class Profiler {
     public static final Class<?>[] CONSTRUCTOR_PARAM_TYPES = new Class<?>[]{Reporter.class, Arguments.class};
 
     private final Reporter<?> reporter;
-    // CONTAINER_ID=container_1486158130664_0002_01_000157
+    // CONTAINER_ID=container_e273_1510780065801_7737_01_000042
     private String[] tags = {};
 
     private long recordedStats = 0;
@@ -32,8 +32,8 @@ public abstract class Profiler {
     }
 
     public static String getApplicationId(String containerId) {
-        String[] parts = containerId.replace("container_", "").split("_");
-        return "application_" + parts[0] + "_" + parts[1];
+        String[] parts = containerId.split("_");
+        return "application_" + parts[2] + "_" + parts[3];
     }
 
     /**
