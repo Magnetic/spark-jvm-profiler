@@ -39,11 +39,6 @@ public abstract class Profiler {
             tagsList.add("luigiTaskFamily:" + luigiTaskFamily);
         }
 
-        String luigiTaskName = arguments.remainingArgs.get("LUIGI_TASK_NAME");
-        if (luigiTaskName != null) {
-            tagsList.add("luigiTaskName:" + luigiTaskName);
-        }
-
         String luigiTaskDate = arguments.remainingArgs.get("LUIGI_TASK_DATE");
         if (luigiTaskDate != null) {
             tagsList.add("luigiTaskDate:" + luigiTaskDate);
@@ -52,6 +47,11 @@ public abstract class Profiler {
         String luigiTaskHour = arguments.remainingArgs.get("LUIGI_TASK_HOUR");
         if (luigiTaskHour != null) {
             tagsList.add("luigiTaskHour:" + luigiTaskHour);
+        }
+
+        String luigiTaskName = arguments.remainingArgs.get("SPARK_APPLICATION_NAME");
+        if (luigiTaskName != null) {
+            tagsList.add("sparkApplicationName:" + luigiTaskName);
         }
 
         String[] tagsTemp = new String[tagsList.size()];
