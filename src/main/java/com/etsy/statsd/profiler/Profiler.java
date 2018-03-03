@@ -34,22 +34,22 @@ public abstract class Profiler {
             tagsList.add("application_id:" + applicationId);
         }
 
-        String luigiTaskFamily = arguments.remainingArgs.get("LUIGI_TASK_FAMILY");
+        String luigiTaskFamily = arguments.remainingArgs.get("luigiTaskFamily");
         if (luigiTaskFamily != null) {
             tagsList.add("luigiTaskFamily:" + luigiTaskFamily);
         }
 
-        String luigiTaskDate = arguments.remainingArgs.get("LUIGI_TASK_DATE");
+        String luigiTaskDate = arguments.remainingArgs.get("luigiTaskDate");
         if (luigiTaskDate != null) {
             tagsList.add("luigiTaskDate:" + luigiTaskDate);
         }
 
-        String luigiTaskHour = arguments.remainingArgs.get("LUIGI_TASK_HOUR");
+        String luigiTaskHour = arguments.remainingArgs.get("luigiTaskHour");
         if (luigiTaskHour != null) {
             tagsList.add("luigiTaskHour:" + luigiTaskHour);
         }
 
-        String luigiTaskName = arguments.remainingArgs.get("SPARK_APPLICATION_NAME");
+        String luigiTaskName = arguments.remainingArgs.get("sparkApplicationName");
         if (luigiTaskName != null) {
             tagsList.add("sparkApplicationName:" + luigiTaskName);
         }
