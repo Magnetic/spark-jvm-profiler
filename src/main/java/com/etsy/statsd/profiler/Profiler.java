@@ -34,24 +34,24 @@ public abstract class Profiler {
             tagsList.add("application_id:" + applicationId);
         }
 
-        String luigiTaskFamily = arguments.remainingArgs.get("luigiTaskFamily");
+        String luigiTaskFamily = arguments.remainingArgs.get("luigi_task_family");
         if (luigiTaskFamily != null) {
-            tagsList.add("luigiTaskFamily:" + luigiTaskFamily);
+            tagsList.add("luigi_task_family:" + luigiTaskFamily);
         }
 
-        String luigiTaskDate = arguments.remainingArgs.get("luigiTaskDate");
+        String luigiTaskDate = arguments.remainingArgs.get("luigi_task_date");
         if (luigiTaskDate != null) {
-            tagsList.add("luigiTaskDate:" + luigiTaskDate);
+            tagsList.add("luigi_task_date:" + luigiTaskDate);
         }
 
-        String luigiTaskHour = arguments.remainingArgs.get("luigiTaskHour");
+        String luigiTaskHour = arguments.remainingArgs.get("luigi_task_hour");
         if (luigiTaskHour != null) {
-            tagsList.add("luigiTaskHour:" + luigiTaskHour);
+            tagsList.add("luigi_task_hour:" + luigiTaskHour);
         }
 
-        String luigiTaskName = arguments.remainingArgs.get("sparkApplicationName");
-        if (luigiTaskName != null) {
-            tagsList.add("sparkApplicationName:" + luigiTaskName);
+        String sparkApplicationName = arguments.remainingArgs.get("spark_application_name");
+        if (sparkApplicationName != null) {
+            tagsList.add("spark_application_name:" + sparkApplicationName);
         }
 
         String[] tagsTemp = new String[tagsList.size()];
