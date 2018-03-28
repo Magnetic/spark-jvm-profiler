@@ -3,6 +3,8 @@ package com.etsy.statsd.profiler;
 import com.etsy.statsd.profiler.reporter.Reporter;
 import com.google.common.base.Preconditions;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +18,7 @@ public abstract class Profiler {
 
     private final Reporter<?> reporter;
     // CONTAINER_ID=container_e273_1510780065801_7737_01_000042
-    private String[] tags = {};
+    private String[] tags = null;
 
     private long recordedStats = 0;
     public Profiler(Reporter reporter, Arguments arguments) {
@@ -24,11 +26,36 @@ public abstract class Profiler {
         this.reporter = reporter;
         handleArguments(arguments);
 
+        Collection<String> tagsList = new ArrayList<>();
         String containerId = System.getenv("CONTAINER_ID");
         if (containerId != null) {
             String applicationId = getApplicationId(containerId);
-            tags = new String[]{"container_id:" + containerId, "application_id:" + applicationId};
+            tagsList.add("container_id:" + containerId);
+            tagsList.add("application_id:" + applicationId);
         }
+
+        String luigiTaskFamily = arguments.remainingArgs.get("luigi_task_family");
+        if (luigiTaskFamily != null) {
+            tagsList.add("luigi_task_family:" + luigiTaskFamily);
+        }
+
+        String luigiTaskDate = arguments.remainingArgs.get("luigi_task_date");
+        if (luigiTaskDate != null) {
+            tagsList.add("luigi_task_date:" + luigiTaskDate);
+        }
+
+        String luigiTaskHour = arguments.remainingArgs.get("luigi_task_hour");
+        if (luigiTaskHour != null) {
+            tagsList.add("luigi_task_hour:" + luigiTaskHour);
+        }
+
+        String sparkApplicationName = arguments.remainingArgs.get("spark_application_name");
+        if (sparkApplicationName != null) {
+            tagsList.add("spark_application_name:" + sparkApplicationName);
+        }
+
+        String[] tagsTemp = new String[tagsList.size()];
+        tags = tagsList.toArray(tagsTemp);
     }
 
     public static String getApplicationId(String containerId) {
