@@ -54,6 +54,16 @@ public abstract class Profiler {
             tagsList.add("spark_application_name:" + sparkApplicationName);
         }
 
+        String sparkNumExecutors = arguments.remainingArgs.get("spark_num_executors");
+        if (sparkApplicationName != null) {
+            tagsList.add("spark_num_executors:" + sparkNumExecutors);
+        }
+
+        String sparkExecutorCores = arguments.remainingArgs.get("spark_executor_cores");
+        if (sparkApplicationName != null) {
+            tagsList.add("spark_executor_cores:" + sparkExecutorCores);
+        }
+
         String[] tagsTemp = new String[tagsList.size()];
         tags = tagsList.toArray(tagsTemp);
     }
